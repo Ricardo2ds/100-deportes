@@ -1,0 +1,32 @@
+<?php
+include 'UsuarioController.php';
+
+$controladorUsuario = new UsuarioController();
+$usuarios = $controladorUsuario->mostrarUsuarios();
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Usuarios</h1>
+        <ul class="list-group">
+            <?php
+            if (!empty($usuarios)) {
+                foreach ($usuarios as $usuario) {
+                    echo "<li class='list-group-item'>ID: " . $usuario["id"] . " - Nombre: " . $usuario["nombre"] . " - Email: " . $usuario["email"] . "</li>";
+                }
+            } else {
+                echo "<li class='list-group-item'>0 resultados</li>";
+            }
+            ?>
+        </ul>
+    </div>
+</body>
+</html>
